@@ -15,7 +15,7 @@ public class FSSystem : FlowState
 
     public override void OnInitialise()
     {
-        m_gameStates.Push(new FSPoker(m_gameContext));
+        m_gameStates.Push(new FSBalatro(m_gameContext));
     }
 
     public override void OnActive()

@@ -3,9 +3,29 @@ using UnityEngine.UI;
 
 public class CardTableUI : MonoBehaviour
 {
-    [SerializeField]
-    private Image[] m_cards;
-    
+    [SerializeField] private Image[] m_cards;
+
+    private int RemoveSelected(CardTable m_cardHand)
+    {
+        for (int i = m_cards.Length - 1; i >= 0; i--)
+        {
+            CardManager mgr = m_cards[i].gameObject.GetComponent<CardManager>();
+            if (mgr.Selected)
+            {
+                mgr.Deselect();
+                m_cardHand.DiscardSelected(i);
+            }
+        }
+
+        Card[] cards = m_cardHand.GetCards();
+        return cards.Length;
+    }
+
+    public int RemoveCards(CardTable m_cardHand)
+    {
+        return RemoveSelected(m_cardHand);
+    }
+
     public void SetCards(CardTable m_cardHand)
     {
         Card[] cards = m_cardHand.GetCards();

@@ -8,44 +8,27 @@ using UnityEngine.UI;
 public class UserUI : MonoBehaviour
 {
     [SerializeField]
-    private Button m_checkButton;
+    private Button m_discardButton;
     [SerializeField]
-    private Button m_foldButton;
+    private Button m_playhandButton;
     [SerializeField]
-    private Button m_raiseButton;
+    private Button m_sortbyrankButton;
     [SerializeField]
-    private Button m_betButton;
-    [SerializeField]
-    private Button m_callButton;
-
-    [SerializeField] 
-    private TextMeshProUGUI m_currencyText;
-    [SerializeField] 
-    private BetSetterUI m_betSetter;
+    private Button m_sortbysuitButton;
 
     private void Awake()
     {
-        ToggleBetSetterActive(false);
     }
 
     public void UpdateCurrencyValue(int newValue)
     {
-        m_currencyText.text = newValue.ToString();
-
-
-        bool checkable = newValue == 0;
-        m_callButton.gameObject.SetActive(!checkable);
-        m_betButton.gameObject.SetActive(checkable);
-        m_checkButton.gameObject.SetActive(checkable);
     }
 
     public void SetTextValue(int value)
     {
-        m_currencyText.text = value.ToString();
     }
     
     public void ToggleBetSetterActive(bool active)
     {
-        m_betSetter.gameObject.SetActive(active);
     }
 }
